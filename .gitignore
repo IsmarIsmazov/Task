@@ -1,0 +1,5 @@
+venv
+templates
+.idea
+__pache__/
+__pycache__/
