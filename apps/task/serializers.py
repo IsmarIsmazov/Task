@@ -12,3 +12,4 @@ class HashtagSerializer(ModelSerializer):
     class Meta:
         model = Hashtag
         fields = "__all__"
+

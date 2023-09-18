@@ -1,33 +1,24 @@
+from decouple import config
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3^fe*k3q*7lr&@l7@(ywitoh(-3cjyb)1pwuxmzn4ssf46=e^e'
+from .development import *
+from .local import *
+from .jazzmin import *
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-ALLOWED_HOSTS = ["*"]
 
-# Application definition
+SECRET_KEY = config('SECRET_KEY')
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework.authtoken',
-    'rest_framework',
-    "apps.users",
-    "apps.task",
-]
+DEBUG = config('DEBUG')
+
+APP_MODE = config('APP_MODE', default='prod')
+if APP_MODE == 'prod':
+    from .prodaction import *
+else:
+    from .development import *
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,12 +54,6 @@ WSGI_APPLICATION = 'scr.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
