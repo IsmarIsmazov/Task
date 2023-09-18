@@ -1,7 +1,12 @@
-from rest_framework import routers
+from django.urls import path
 
 from apps.task.views import TaskViewSet
+from apps.users.views import SignUpView, LoginView
 
-router = routers.DefaultRouter()
-router.register("users", TaskViewSet)
-urlpatterns = router.urls
+urlpatterns = [
+    path('signup/', SignUpView.as_view(), name='signup'),
+    path('login/', LoginView.as_view(), name='login'),
+    # path('logout/', LogoutView.as_view(), name='logout'),
+
+
+]

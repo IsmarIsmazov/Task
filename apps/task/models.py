@@ -5,6 +5,6 @@ class Hashtag(models.Model):
 class Task(models.Model):
     title = models.CharField(max_length=100)
     descriptions = models.TextField()
-    created_at = models.DateField(auto_created=True)
+    created_at = models.DateField(auto_now_add=True)
     completed = models.BooleanField()
     hashtag = models.ManyToManyField(Hashtag,)
