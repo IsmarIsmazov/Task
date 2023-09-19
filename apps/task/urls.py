@@ -5,5 +5,5 @@ from apps.task.views import TaskViewSet, CategoryViewSet
 
 router = routers.DefaultRouter()
 router.register("task", TaskViewSet)
-router.register("hashtag", CategoryViewSet)
+router.register("category", CategoryViewSet)
 urlpatterns = router.urls

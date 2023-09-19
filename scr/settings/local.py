@@ -3,6 +3,7 @@ ALLOWED_HOSTS = ["*"]
 CREATE_APPS = [
     "apps.users",
     "apps.task",
+    "apps.notifications",
 ]
 
 INSTALLED_LIBRARY = [
