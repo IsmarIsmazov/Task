@@ -1,10 +1,9 @@
-from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 
 from apps.task.filters import TaskFilter
-from apps.task.models import Task, Hashtag
-from apps.task.serializers import TaskSerializer, HashtagSerializer
+from apps.task.models import Task, Category
+from apps.task.serializers import TaskSerializer, CategorySerializer
 
 
 # Create your views here.
@@ -17,6 +16,6 @@ class TaskViewSet(ModelViewSet):
     search_fields = ['title', 'description']
 
 
-class HashtagViewSet(ModelViewSet):
-    queryset = Hashtag.objects.all()
-    serializer_class = HashtagSerializer
+class CategoryViewSet(ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

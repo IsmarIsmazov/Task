@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from apps.task.models import Task, Hashtag
+from apps.task.models import Task, Category
 
 
 class TaskSerializer(ModelSerializer):
@@ -8,8 +8,8 @@ class TaskSerializer(ModelSerializer):
         model = Task
         fields = "__all__"
 
-class HashtagSerializer(ModelSerializer):
+class CategorySerializer(ModelSerializer):
     class Meta:
-        model = Hashtag
+        model = Category
         fields = "__all__"
 
