@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: backend_task
+    env_file:
+      - .env
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    networks:
+      - backend_task
+    volumes:
+      - .:/TaskProject
+
+networks:
+  backend_task:
+    driver: bridge
+
